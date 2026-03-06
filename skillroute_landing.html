@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Route — Tu ruta profesional, verificada</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white: #FFFFFF;
+  --off-white: #F8F7F5;
+  --light: #F0EEE9;
+  --stone: #E2DDD6;
+  --mid: #9A9488;
+  --ink-light: #5A5650;
+  --ink: #1C1A17;
+  --accent: #2A5C45;
+  --accent-light: #EAF2EE;
+  --gold: #B8952A;
+  --gold-light: #F7F0E0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+  height: 64px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--accent); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  background: var(--white);
+  overflow: hidden;
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-circle-1 {
+  width: 600px; height: 600px;
+  top: -200px; right: -150px;
+  background: radial-gradient(circle, rgba(42,92,69,0.05) 0%, transparent 70%);
+}
+.hero-circle-2 {
+  width: 400px; height: 400px;
+  bottom: -100px; left: -100px;
+  background: radial-gradient(circle, rgba(184,149,42,0.06) 0%, transparent 70%);
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -1px;
+  color: var(--ink);
+  max-width: 900px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-title strong {
+  font-weight: 600;
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ink-light);
+  max-width: 520px;
+  line-height: 1.8;
+  margin-top: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.btn-primary {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--stone);
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-secondary:hover {
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.hero-badges {
+  display: flex;
+  gap: 32px;
+  margin-top: 72px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1s forwards;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hero-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--mid);
+  letter-spacing: 0.5px;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Divider line */
+.divider {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--stone), transparent);
+  margin: 0 auto;
+}
+
+/* ─── DUAL CTA STRIP ─── */
+.dual-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--stone);
+  border-bottom: 1px solid var(--stone);
+}
+.dual-cta-item {
+  padding: 56px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: background 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.dual-cta-item:first-child { border-right: 1px solid var(--stone); }
+.dual-cta-item:hover { background: var(--off-white); }
+.dual-cta-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.dual-cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.dual-cta-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.7;
+  max-width: 360px;
+}
+.dual-cta-arrow {
+  font-size: 20px;
+  color: var(--accent);
+  margin-top: 8px;
+  transition: transform 0.2s;
+}
+.dual-cta-item:hover .dual-cta-arrow { transform: translateX(6px); }
+
+/* ─── HOW IT WORKS ─── */
+.section {
+  padding: 120px 64px;
+}
+.section-alt { background: var(--off-white); }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.section-kicker {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.section-title em { font-style: italic; color: var(--accent); }
+
+/* Steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--stone);
+  border: 1px solid var(--stone);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.step {
+  background: var(--white);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.section-alt .step { background: var(--off-white); }
+.step:hover { background: var(--accent-light); }
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1;
+  position: absolute;
+  top: 24px; right: 32px;
+}
+.step-icon {
+  width: 48px; height: 48px;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.step-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.8;
+}
+.step-detail {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--accent);
+  text-transform: uppercase;
+  padding-top: 12px;
+  border-top: 1px solid var(--stone);
+  margin-top: auto;
+}
+
+/* ─── FEATURE STRIP ─── */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--stone);
+}
+.feature {
+  padding: 48px 40px;
+  border-right: 1px solid var(--stone);
+  transition: background 0.3s;
+}
+.feature:last-child { border-right: none; }
+.feature:hover { background: var(--off-white); }
+.feature-icon { font-size: 28px; margin-bottom: 20px; }
+.feature-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.feature-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+
+/* ─── PRICING ─── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--stone);
+  border: 1px solid var(--stone);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.plan {
+  background: var(--white);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  transition: transform 0.3s;
+}
+.plan:hover { transform: translateY(-4px); background: var(--white); }
+.plan-featured {
+  background: var(--ink);
+  color: var(--white);
+}
+.plan-featured:hover { background: var(--ink); }
+
+.plan-badge {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  height: 16px;
+}
+.plan-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.plan-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+.plan-featured .plan-desc { color: rgba(255,255,255,0.6); }
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.plan-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  line-height: 1;
+}
+.plan-currency {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--mid);
+  align-self: flex-start;
+  margin-top: 12px;
+}
+.plan-featured .plan-currency { color: rgba(255,255,255,0.5); }
+.plan-period {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--mid);
+}
+.plan-featured .plan-period { color: rgba(255,255,255,0.5); }
+
+.plan-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--stone);
+  margin: 28px 0;
+}
+.plan-featured .plan-divider { background: rgba(255,255,255,0.1); }
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex: 1;
+}
+.plan-feature {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink-light);
+  align-items: flex-start;
+}
+.plan-featured .plan-feature { color: rgba(255,255,255,0.75); }
+.plan-check {
+  color: var(--accent);
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.plan-featured .plan-check { color: var(--gold); }
+
+.plan-cta {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: block;
+}
+.plan-cta-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--stone);
+}
+.plan-cta-outline:hover { border-color: var(--ink); background: var(--off-white); }
+.plan-cta-solid {
+  background: var(--gold);
+  color: var(--ink);
+}
+.plan-cta-solid:hover { background: #C9A42E; }
+.plan-cta-ghost {
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.plan-cta-ghost:hover { background: rgba(255,255,255,0.15); }
+
+.pricing-note {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--mid);
+  letter-spacing: 0.5px;
+}
+.pricing-note a { color: var(--accent); text-decoration: none; }
+
+/* ─── BLOCKCHAIN BANNER ─── */
+.blockchain-banner {
+  padding: 80px 64px;
+  background: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.bb-left {}
+.bb-kicker {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.bb-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.bb-title em { font-style: italic; color: var(--gold); }
+.bb-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+}
+.bb-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.bb-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.25s;
+}
+.bb-item:hover { background: rgba(255,255,255,0.07); }
+.bb-item-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.bb-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.bb-item-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--off-white);
+  border-top: 1px solid var(--stone);
+  padding: 64px 64px 40px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+}
+.footer-brand {}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.footer-logo span { color: var(--accent); }
+.footer-tagline {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.7;
+  max-width: 260px;
+}
+.footer-col-title {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--stone);
+  padding-top: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-copyright {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--mid);
+}
+.footer-stellar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--mid);
+  letter-spacing: 1px;
+}
+.stellar-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  nav { padding: 0 32px; }
+  .nav-links { display: none; }
+  .section { padding: 80px 32px; }
+  .dual-cta { grid-template-columns: 1fr; }
+  .dual-cta-item:first-child { border-right: none; border-bottom: 1px solid var(--stone); }
+  .steps { grid-template-columns: 1fr; }
+  .features { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
+  .blockchain-banner { grid-template-columns: 1fr; padding: 60px 32px; gap: 40px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 100px 24px 60px; }
+  .features { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .dual-cta-item { padding: 40px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Skill<span>Route</span></a>
+  <ul class="nav-links">
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#instituciones">Instituciones</a></li>
+  </ul>
+  <a href="#precios" class="nav-cta">Comenzar</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-circle hero-circle-1"></div>
+  <div class="hero-circle hero-circle-2"></div>
+
+  <div class="hero-eyebrow">Credenciales digitales verificadas · Powered by Stellar Blockchain</div>
+
+  <h1 class="hero-title">
+    Tu ruta profesional,<br>
+    <em>demostrada</em> para<br>
+    <strong>siempre</strong>
+  </h1>
+
+  <p class="hero-sub">
+    Guarda tus constancias, certificados y reconocimientos en blockchain. Compártelos con un link. Nadie podrá falsificarlos.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#precios" class="btn-primary">Crear mi Skill Route</a>
+    <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
+  </div>
+
+  <div class="hero-badges">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Verificado en Stellar Blockchain
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Estándar Open Badges 3.0
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Compartible en LinkedIn, X, Instagram
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      100% a prueba de falsificaciones
+    </div>
+  </div>
+</section>
+
+<!-- DUAL CTA -->
+<div class="dual-cta reveal">
+  <a href="#precios" class="dual-cta-item">
+    <div class="dual-cta-label">Para profesionales</div>
+    <div class="dual-cta-title">Custodia y comparte tus logros</div>
+    <div class="dual-cta-desc">Sube tus PDFs, obtén un link verificable y compártelo en redes sociales. Tu historial, protegido de por vida.</div>
+    <div class="dual-cta-arrow">→</div>
+  </a>
+  <a href="#instituciones" class="dual-cta-item">
+    <div class="dual-cta-label">Para instituciones</div>
+    <div class="dual-cta-title">Emite credenciales que no se pueden falsificar</div>
+    <div class="dual-cta-desc">Emite certificados digitales masivos con sello blockchain. Tus egresados los comparten con orgullo; cualquiera los verifica en segundos.</div>
+    <div class="dual-cta-arrow">→</div>
+  </a>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section section-alt" id="como-funciona">
+  <div class="section-header reveal">
+    <div class="section-kicker">El proceso</div>
+    <h2 class="section-title">Tres pasos.<br><em>Una ruta que dura para siempre.</em></h2>
+  </div>
+
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-icon">📄</div>
+      <div class="step-title">Sube tu credencial</div>
+      <div class="step-desc">Carga tu constancia, certificado o reconocimiento en PDF. El sistema genera automáticamente una huella digital única — imposible de replicar.</div>
+      <div class="step-detail">PDF · Imagen escaneada · Documento digital</div>
+    </div>
+    <div class="step reveal" style="transition-delay:0.15s">
+      <div class="step-num">02</div>
+      <div class="step-icon">⛓️</div>
+      <div class="step-title">Se ancla en blockchain</div>
+      <div class="step-desc">Tu documento queda grabado en la red Stellar con un token único. Fecha, emisor y contenido quedan sellados para siempre — ni tú ni nadie puede modificarlos.</div>
+      <div class="step-detail">Stellar Blockchain · Token inmutable · IPFS</div>
+    </div>
+    <div class="step reveal" style="transition-delay:0.3s">
+      <div class="step-num">03</div>
+      <div class="step-icon">🔗</div>
+      <div class="step-title">Comparte con un link</div>
+      <div class="step-desc">Recibe una URL pública verificable. Cualquier persona puede confirmar la autenticidad de tu credencial sin crear cuenta — en menos de 10 segundos.</div>
+      <div class="step-detail">URL pública · Sin descarga · Verificación instantánea</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="features reveal">
+  <div class="feature">
+    <div class="feature-icon">🛡️</div>
+    <div class="feature-title">Protección total</div>
+    <div class="feature-desc">Tus PDFs no se pueden descargar ni manipular. Solo se visualizan — protegidos por blockchain.</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">📱</div>
+    <div class="feature-title">Redes sociales</div>
+    <div class="feature-desc">Comparte en LinkedIn, X, Instagram y TikTok. El link muestra una vista elegante con badge de verificación.</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">🌿</div>
+    <div class="feature-title">Árbol de carrera</div>
+    <div class="feature-desc">Visualiza tu trayectoria profesional como un grafo interactivo. Cada credencial conectada con la siguiente. <em>Próximamente.</em></div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">⚡</div>
+    <div class="feature-title">Verificación instantánea</div>
+    <div class="feature-desc">Empleadores e instituciones verifican en segundos. Sin llamadas, sin correos, sin burocracia.</div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="section" id="precios">
+  <div class="section-header reveal">
+    <div class="section-kicker">Planes</div>
+    <h2 class="section-title">Elige tu <em>ruta</em></h2>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- FREE -->
+    <div class="plan reveal">
+      <div class="plan-badge">&nbsp;</div>
+      <div class="plan-name">Explorador</div>
+      <div class="plan-desc">Para comenzar a construir tu ruta profesional verificada.</div>
+      <div class="plan-price">
+        <span class="plan-currency">$</span>
+        <span class="plan-amount">0</span>
+      </div>
+      <div class="plan-period">Gratis · Para siempre</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature"><span class="plan-check">✓</span>Hasta 5 credenciales</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>URL pública verificable</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Token blockchain por credencial</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Compartir en 1 red social</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Marca de agua Skill Route</li>
+      </ul>
+      <a href="#" class="plan-cta plan-cta-outline">Comenzar gratis</a>
+    </div>
+
+    <!-- PRO -->
+    <div class="plan plan-featured reveal" style="transition-delay:0.15s">
+      <div class="plan-badge">★ Más popular</div>
+      <div class="plan-name">Profesional</div>
+      <div class="plan-desc">Para el profesional que quiere que su carrera hable por sí sola.</div>
+      <div class="plan-price">
+        <span class="plan-currency" style="color:rgba(255,255,255,0.5)">$</span>
+        <span class="plan-amount">9</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:rgba(255,255,255,0.5)">.99</span>
+      </div>
+      <div class="plan-period">USD / mes</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature"><span class="plan-check">✓</span>Credenciales ilimitadas</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Todas las redes sociales</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Sin marca de agua</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Árbol de trazabilidad (Fase 2)</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Perfil público personalizado</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Soporte prioritario</li>
+      </ul>
+      <a href="#" class="plan-cta plan-cta-solid">Activar plan Pro</a>
+    </div>
+
+    <!-- INSTITUTION -->
+    <div class="plan reveal" style="transition-delay:0.3s" id="instituciones">
+      <div class="plan-badge">&nbsp;</div>
+      <div class="plan-name">Institución</div>
+      <div class="plan-desc">Para organizaciones que emiten credenciales a escala.</div>
+      <div class="plan-price">
+        <span class="plan-currency">$</span>
+        <span class="plan-amount">299</span>
+      </div>
+      <div class="plan-period">USD / mes · desde</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature"><span class="plan-check">✓</span>Emisión masiva de credenciales</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Panel de administración</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Marca blanca (white label)</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>API de verificación</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>Revocación y reemisión</li>
+        <li class="plan-feature"><span class="plan-check">✓</span>SLA y soporte dedicado</li>
+      </ul>
+      <a href="#" class="plan-cta plan-cta-outline">Hablar con ventas</a>
+    </div>
+
+  </div>
+  <p class="pricing-note reveal">¿Tienes dudas? <a href="#">Escríbenos</a> — respondemos en menos de 24 horas.</p>
+</section>
+
+<!-- BLOCKCHAIN BANNER -->
+<div class="blockchain-banner reveal">
+  <div class="bb-left">
+    <div class="bb-kicker">Por qué blockchain</div>
+    <h3 class="bb-title">Tu credencial es <em>tuya</em>.<br>Nadie puede borrrarla.</h3>
+    <p class="bb-desc">A diferencia de un PDF en Google Drive o un certificado en papel, tus credenciales en Skill Route quedan grabadas en la blockchain de Stellar — una red descentralizada que ninguna empresa, institución o gobierno puede modificar.</p>
+  </div>
+  <div class="bb-right">
+    <div class="bb-item">
+      <div class="bb-item-icon">🔒</div>
+      <div>
+        <div class="bb-item-title">Inmutabilidad absoluta</div>
+        <div class="bb-item-desc">Una vez grabada en Stellar, la credencial no puede modificarse. Ni siquiera nosotros podemos alterar el registro.</div>
+      </div>
+    </div>
+    <div class="bb-item">
+      <div class="bb-item-icon">🔍</div>
+      <div>
+        <div class="bb-item-title">Verificación pública</div>
+        <div class="bb-item-desc">Cualquier persona puede confirmar la autenticidad en Stellar Explorer — sin necesidad de confiar en Skill Route.</div>
+      </div>
+    </div>
+    <div class="bb-item">
+      <div class="bb-item-icon">⏱️</div>
+      <div>
+        <div class="bb-item-title">Prueba de fecha y hora</div>
+        <div class="bb-item-desc">Cada credencial tiene un sello de tiempo irrefutable. Nadie puede antedatar ni alterar cuándo fue emitida.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Skill<span>Route</span></div>
+      <p class="footer-tagline">Tu ruta profesional, verificada en blockchain. Guarda, protege y comparte tus credenciales con el mundo.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Producto</div>
+      <ul class="footer-links">
+        <li><a href="#">Cómo funciona</a></li>
+        <li><a href="#">Precios</a></li>
+        <li><a href="#">Para instituciones</a></li>
+        <li><a href="#">Árbol de carrera</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Compañía</div>
+      <ul class="footer-links">
+        <li><a href="#">Acerca de</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Carreras</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Términos de uso</a></li>
+        <li><a href="#">Política de cookies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copyright">© 2026 Skill Route. Todos los derechos reservados.</div>
+    <div class="footer-stellar">
+      <div class="stellar-dot"></div>
+      Powered by Stellar Blockchain
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 40) {
+    nav.style.borderBottomColor = 'rgba(0,0,0,0.10)';
+  } else {
+    nav.style.borderBottomColor = 'rgba(0,0,0,0.06)';
+  }
+});
+</script>
+</body>
+</html>
